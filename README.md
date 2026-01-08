@@ -51,12 +51,15 @@ Complete pipeline including:
 
 **Runtime:** ~30-45 minutes
 
-#### 2. `Data_Preprocessing_EDA_Notebook.ipynb`
-Rigorous validation including:
-- 10 independent runs (seeds 42-51)
-- 95% confidence interval computation
-- Paired t-tests with Cohen's d effect sizes
-- Reproducibility verification
+#### 2. `Data_Preprocessing_EDA_Notebook_.ipynb`
+Data preprocessing and exploratory analysis:
+- CIC-IDS2017 and CICIoT2023 loading
+- Domain-invariant feature engineering (6 features)
+- SMOTE balancing and undersampling
+- Exploratory Data Analysis (EDA)
+- Class distribution analysis
+- Feature correlation and statistics
+- Data export for main notebook
 
 **Runtime:** ~2-3 hours
 
@@ -138,28 +141,29 @@ cd ../..
 
 ### Running the Notebooks
 
+**Recommended Order:**
+1. Run `Data_Preprocessing_EDA_Notebook_.ipynb` first (prepares data)
+2. Then run `Cross_Domain_IDS_Implementation_Notebook.ipynb` (uses preprocessed data)
+
 #### Option 1: Local Jupyter
 ```bash
 jupyter notebook
-# Then open: Cross_Domain_IDS_Implementation_Notebook.ipynb
+# Open notebooks in order
 ```
 
 #### Option 2: JupyterLab
 ```bash
 jupyter lab
-# Navigate to notebooks in the file browser
 ```
 
 #### Option 3: Google Colab
 1. Upload both notebooks to Google Drive
-2. Upload `processed_data.zip` to Drive
-3. Open notebook in Colab
-4. Mount Drive:
-   ```python
+2. Upload `processed_data.zip` to Drive (or run preprocessing notebook to generate)
+3. Mount Drive in notebook:
+```python
    from google.colab import drive
    drive.mount('/content/drive')
-   ```
-5. Update file paths to your Drive location
+```
 
 #### Option 4: VS Code
 1. Install Jupyter extension
